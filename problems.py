@@ -1,21 +1,10 @@
-inp = input()
-ans = [int(x) for x in inp]
-temp = []
-if len(ans) > 1:
-    temp.append(ans.pop(-2))
-if ans:
-    temp.append(ans.pop(-1))
-if ans:
-    if int(''.join(str(e) for e in temp)) == 0:
-        res = int(''.join(str(e) for e in ans))-1
-        ans = []
-        ans.append(res)
-    elif int(''.join(str(e) for e in temp)) < 49:
-        ans[-1] = ans[-1]-1
+inp = int(input())
 
-ans.append(9)
-ans.append(9)
-if int(''.join(str(e) for e in ans)) > 0:
-    print(''.join(str(e) for e in ans))
-else:
+if inp < 100:
     print(99)
+else:
+    a = inp % 100
+    if a < 49:
+        print(inp-a-1)
+    else:
+        print(inp+(99-a))
