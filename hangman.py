@@ -1,20 +1,21 @@
-word = input()
+word = set(input())
 inp = input()
-lose_con = 0
-win_con = 0
-temp = set(word)
+lose = True
 win_con = len(word)
+lose_con = 10
+inp_length = len(inp)
+current_position = 0
 
-for i in inp:
-    if win_con > 0 and lose_con < 10:
-        if i in temp:
-            win_con -= 1
-        else:
-            lose_con += 1
+while lose and inp_length > current_position and lose_con:
+    if not win_con:
+        lose = False
+    if inp[current_position] in word:
+        win_con -= 1
     else:
-        if win_con <= 0:
-            print("WIN")
-            break
-        else:
-            print("LOSE")
-            break
+        lose_con -= 1
+    current_position += 1
+else:
+    if lose:
+        print("LOSE")
+    else:
+        print("WIN")
